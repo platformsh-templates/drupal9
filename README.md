@@ -6,15 +6,18 @@
 </a>
 </p>
 
-This template builds Drupal 9 using the "Drupal Recommended" Composer project.  It also includes configuration to use Redis for caching, although that must be enabled post-install in `.platform.app.yaml`.
+This template builds Drupal 9 using the "Drupal Recommended" Composer project.  It is pre-configured to use MariaDB and Redis for caching.  The Drupal installer will skip asking for database credentials as they are already provided.
 
 Drupal is a flexible and extensible PHP-based CMS framework.
 
-## Services
+## Features
 
 * PHP 7.4
 * MariaDB 10.4
 * Redis 5
+* Drush included
+* Automatic TLS certificates
+* Composer-based build
 
 ## Post-install
 
