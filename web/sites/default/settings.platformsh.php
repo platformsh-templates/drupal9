@@ -102,8 +102,8 @@ if (!isset($settings['php_storage']['twig'])) {
 // Host headers, as the only possible Host header is already guaranteed safe.
 $settings['trusted_host_patterns'] = ['.*'];
 
-// Import variables prefixed with 'd8settings:' into $settings
-// and 'd8config:' into $config.
+// Import variables prefixed with 'drupalsettings:' into $settings
+// and 'drupalconfig:' into $config.
 foreach ($platformsh->variables() as $name => $value) {
   $parts = explode(':', $name);
   list($prefix, $key) = array_pad($parts, 3, null);
@@ -112,7 +112,7 @@ foreach ($platformsh->variables() as $name => $value) {
     // to the $settings array verbatim, even if the value is an array.
     // For example, a variable named d8settings:example-setting' with
     // value 'foo' becomes $settings['example-setting'] = 'foo';
-    case 'd8settings':
+    case 'drupalsettings':
     case 'drupal':
       $settings[$key] = $value;
       break;
@@ -128,7 +128,7 @@ foreach ($platformsh->variables() as $name => $value) {
     // Example: Variable `d8config:conf_file:prop:subprop` with value ['foo' => 'bar'] becomes
     // $config['conf_file']['prop']['subprop']['foo'] = 'bar';
     // Example: Variable `d8config:prop` is ignored.
-    case 'd8config':
+    case 'drupalconfig':
       if (count($parts) > 2) {
         $temp = &$config[$key];
         foreach (array_slice($parts, 2) as $n) {
@@ -140,7 +140,6 @@ foreach ($platformsh->variables() as $name => $value) {
       break;
   }
 }
-
 
 // Set the project-specific entropy value, used for generating one-time
 // keys and such.
