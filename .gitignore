@@ -22,4 +22,12 @@ console/
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore mounts
+web/sites/default/files
+tmp
+private
+.drush
+drush-backups
+.console
 /.editorconfig
