@@ -1,13 +1,18 @@
 # This file describes an application. You can have multiple applications
 # in the same project.
 #
-# See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
+# See https://docs.platform.sh/configuration/app.html
 
 # The name of this app. Must be unique within a project.
 name: 'app'
 
 # The runtime the application uses.
 type: 'php:7.4'
+
+runtime:
+    # Enable the redis extension so Drupal can communicate with the Redis cache.
+    extensions:
+        - redis
 
 # The relationships of the application with services or other applications.
 #
@@ -23,36 +28,50 @@ disk: 2048
 
 # The 'mounts' describe writable, persistent filesystem mounts in the application.
 mounts:
+    # The default Drupal files directory.
     '/web/sites/default/files':
         source: local
         source_path: 'files'
+    # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
+    # file will automatically configure Drupal to use this directory.
     '/tmp':
         source: local
         source_path: 'tmp'
+    # Private file uploads are stored outside the web root. The settings.platformsh.php
+    # file will automatically configure Drupal to use this directory.
     '/private':
         source: local
         source_path: 'private'
+    # Drush needs a scratch space for its own caches.
     '/.drush':
         source: local
         source_path: 'drush'
+    # Drush will try to save backups to this directory, so it must be
+    # writeable even though you will almost never need to use it.
     '/drush-backups':
         source: local
         source_path: 'drush-backups'
+    # Drupal Console will try to save backups to this directory, so it must be
+    # writeable even though you will almost never need to use it.
     '/.console':
         source: local
         source_path: 'console'
 
 # Configuration of the build of this application.
 build:
+    # Automatically run `composer install` on every build.
     flavor: composer
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     # The build hook runs after Composer to finish preparing up your code.
+    # No services are available but the disk is writeable.
     build: |
         set -e
-        bash install-redis.sh 4.3.0
     # The deploy hook runs after your application has been deployed and started.
+    # Code cannot be modified at this point but the database is available.
+    # The site is not accepting requests while this script runs so keep it
+    # fast.
     deploy: |
         set -e
         php ./drush/platformsh_generate_drush_yml.php
@@ -63,8 +82,8 @@ hooks:
 
 # The configuration of app when it is exposed to the web.
 web:
-    # Specific parameters for different URL prefixes.
     locations:
+        # All requests not otherwise specified follow these rules.
         '/':
             # The folder from which to serve static assets, for this location.
             #
@@ -79,13 +98,10 @@ web:
             # 365 days).
             expires: 5m
 
-            # Whether to forward disallowed and missing resources from this
-            # location to the application.
-            #
-            # Can be true, false or a URI path string.
+            # Redirect any incoming request to Drupal's front controller.
             passthru: '/index.php'
 
-            # Deny access to static files in this location.
+            # Deny access to all static files, except those specifically allowed below.
             allow: false
 
             # Rules for specific URI patterns.
@@ -104,6 +120,7 @@ web:
                 '^/sites/[^/]+/settings.*?\.php$':
                     scripts: false
 
+        # The files directory has its own special configuration rules.
         '/sites/default/files':
             # Allow access to all files in the public files directory.
             allow: true
@@ -111,7 +128,7 @@ web:
             passthru: '/index.php'
             root: 'web/sites/default/files'
 
-            # Do not execute PHP scripts.
+            # Do not execute PHP scripts from the writeable mount.
             scripts: false
 
             rules:
@@ -119,8 +136,8 @@ web:
                 '^/sites/default/files/(css|js)':
                     expires: 2w
 
-# The configuration of scheduled execution.
 crons:
+    # Run Drupal's cron tasks every 19 minutes.
     drupal:
-        spec: '*/20 * * * *'
+        spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
