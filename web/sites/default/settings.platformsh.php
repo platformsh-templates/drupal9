@@ -22,6 +22,19 @@ if ($platformsh->hasRelationship('database')) {
   ];
 }
 
+// Enable verbose error messages on development branches, but not on the production branch.
+// You may add more debug-centric settings here if desired to have them automatically enable
+// on development but not production.
+if (isset($platformsh->branchName)) {
+  // Production type environment.
+  if ($platformsh->branchName == 'master' || $platformsh->onDedicated()) {
+    $config['system.logging']['error_level'] = 'hide';
+  } // Development type environment.
+  else {
+    $config['system.logging']['error_level'] = 'verbose';
+  }
+}
+
 // Enable Redis caching.
 if ($platformsh->hasRelationship('redis') && !InstallerKernel::installationAttempted() && extension_loaded('redis') && class_exists('Drupal\redis\ClientFactory')) {
   $redis = $platformsh->credentials('redis');
