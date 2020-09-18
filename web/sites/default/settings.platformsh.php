@@ -25,9 +25,9 @@ if ($platformsh->hasRelationship('database')) {
 // Enable verbose error messages on development branches, but not on the production branch.
 // You may add more debug-centric settings here if desired to have them automatically enable
 // on development but not production.
-if (isset($platformsh->branchName)) {
+if (isset($platformsh->branch)) {
   // Production type environment.
-  if ($platformsh->branchName == 'master' || $platformsh->onDedicated()) {
+  if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
   } // Development type environment.
   else {
