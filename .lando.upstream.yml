@@ -1,0 +1,32 @@
+# This file sets some good defaults for the local development of a platform.sh
+# Drupal 9 project using Lando.
+#
+# Note that you should not edit this file so it can continue to receive upstream
+# updates. If you wish to change the values below then override them in your
+# normal .lando.yml.
+
+# These both allow you to test this template without needing a site on platform.sh
+# However you will want to replace them in your .lando.yml
+name: drupal9-platformsh
+recipe: platformsh
+
+config:
+  # Generally this section overrides production variables and settings for
+  # values that make more sense for local development.
+  #
+  # Note that "app" is the name of the application defined in your
+  # .platform.app.yaml.
+  #
+  # Note that the syntax under each app is the same as the format defined here:
+  # https://docs.platform.sh/configuration/app/variables.html
+  variables:
+    app:
+      d8config:
+        "system.file:path:temporary": "/tmp"
+      d8settings:
+        "skip_permissions_hardening": 1
+
+# These are Drupal 9 specific tools that are commonly used during development.
+tooling:
+  drush:
+    service: app
