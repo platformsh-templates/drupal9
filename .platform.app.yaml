@@ -79,6 +79,7 @@ hooks:
     # fast.
     deploy: |
         set -e
+        echo "Something elese"
         php ./drush/platformsh_generate_drush_yml.php
         cd web
         drush -y cache-rebuild
