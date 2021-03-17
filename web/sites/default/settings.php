@@ -30,7 +30,7 @@ $settings['file_scan_ignore_directories'] = [
 // Set up a config sync directory.
 //
 // This is defined inside the read-only "config" directory, deployed via Git.
-$settings['config_sync_directory'] = '../config/sync';
+$settings['config_sync_directory'] = 'config/sync';
 
 // Automatic Platform.sh settings.
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
