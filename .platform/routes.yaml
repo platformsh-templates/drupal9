@@ -15,3 +15,10 @@
 "https://www.{default}/":
     type: redirect
     to: "https://{default}/"
+
+# Disable cache for admin pages to make password reset work
+https://{default}/wp-admin/:
+    type: upstream
+    upstream: "app:http"
+    cache:
+        enabled: false
