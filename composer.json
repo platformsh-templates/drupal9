@@ -1,6 +1,6 @@
 {
-    "name": "drupal/recommended-project",
-    "description": "Project template for Drupal 9 projects with a relocated document root",
+    "name": "platformsh/drupal-recommended-project",
+    "description": "This template builds Drupal 9 for Platform.sh based the \"Drupal Recommended\" Composer project.",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://www.drupal.org/project/drupal",
