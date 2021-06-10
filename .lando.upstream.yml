@@ -20,9 +20,9 @@ config:
   overrides:
     app:
       variables:
-        d8config:
+        drupalconfig:
           "system.file:path:temporary": "/tmp"
-        d8settings:
+        drupalsettings:
           "skip_permissions_hardening": 1
 
 
