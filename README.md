@@ -23,6 +23,14 @@ Drupal is a flexible and extensible PHP-based CMS framework.
 
 Run through the Drupal installer as normal.  You will not be asked for database credentials as those are already provided.
 
+## Create a new project locally with Composer
+
+This Composer command will create a new Drupal 9 project locally from this template with the customizations you need to deploy your project to Platform.sh.
+
+```
+composer create-project platformsh/drupal-recommended-project
+```
+
 ## Customizations
 
 The following changes have been made relative to Drupal 9 "Recommended" project as it is downloaded from Drupal.org or Packagist.  If using this project as a reference for your own existing project, replicate the changes below to your project.
