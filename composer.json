@@ -20,7 +20,7 @@
         "drupal/core-project-message": "^9",
         "drupal/core-recommended": "^9",
         "drupal/redis": "^1.5",
-        "drush/drush": "^10.4",
+        "drush/drush": "^10.5",
         "platformsh/config-reader": "^2.4"
     },
     "conflict": {
