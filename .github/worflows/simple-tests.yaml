@@ -1,0 +1,29 @@
+name: simple tests
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+jobs:
+  build:
+    name: "Fake test so we can have something 'pass'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Test for composer
+        id: composer_exists
+        run: |
+            if [[ ! -f 'composer.json' ]]; then
+              response="fail"
+            else
+              response="pass"
+            fi
+
+            echo "::set-output name=testresult::$response"
+      - name: Check Pass
+        if: steps.composer_ecists.outputs.testresult != 'pass'
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Composer Does Not Exist!')
