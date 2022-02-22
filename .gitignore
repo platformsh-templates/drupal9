@@ -30,4 +30,3 @@ private
 .drush
 drush-backups
 .console
-/.editorconfig
