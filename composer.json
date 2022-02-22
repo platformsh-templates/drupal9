@@ -16,9 +16,9 @@
     ],
     "require": {
         "composer/installers": "^1.9",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-project-message": "^9",
-        "drupal/core-recommended": "^9",
+        "drupal/core-composer-scaffold": "^9.3",
+        "drupal/core-project-message": "^9.3",
+        "drupal/core-recommended": "^9.3",
         "drupal/redis": "^1.5",
         "drush/drush": "^11.0",
         "platformsh/config-reader": "^2.4"
@@ -26,7 +26,7 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
         "sort-packages": true
@@ -58,6 +58,9 @@
             ],
             "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
             ],
             "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
