@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Platform.sh example settings.php file for Drupal 8.
+ * Platform.sh example settings.php file for Drupal 9.
  */
 
 // Default Drupal settings.
@@ -9,7 +9,7 @@
 // These are already explained with detailed comments in Drupal's
 // default.settings.php file.
 //
-// See https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
+// See https://api.drupal.org/api/drupal/sites!default!default.settings.php/9
 $databases = [];
 $config_directories = [];
 $settings['update_free_access'] = FALSE;
