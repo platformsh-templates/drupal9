@@ -64,23 +64,23 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "cd3912e25e20bb12b6dce8d522793f3abd71ab8c"
+                "reference": "90f6a8790a71f05d3f4168bae67b73fec6c34294"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/cd3912e25e20bb12b6dce8d522793f3abd71ab8c",
-                "reference": "cd3912e25e20bb12b6dce8d522793f3abd71ab8c",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/90f6a8790a71f05d3f4168bae67b73fec6c34294",
+                "reference": "90f6a8790a71f05d3f4168bae67b73fec6c34294",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.4",
-                "psr/log": "^1.1 || ^2.0",
-                "symfony/console": "^4.4.15 || ^5.1",
+                "psr/log": "^1.1 || ^2.0 || ^3.0",
+                "symfony/console": "^4.4.15 || ^5.1 || ^6.0",
                 "symfony/filesystem": "^4.4 || ^5.1 || ^6",
                 "symfony/polyfill-php80": "^1.23",
                 "symfony/string": "^5.1 || ^6",
@@ -92,12 +92,12 @@
             "require-dev": {
                 "chi-teck/drupal-coder-extension": "^1.2",
                 "drupal/coder": "^8.3.14",
-                "friendsoftwig/twigcs": "^5.0",
+                "friendsoftwig/twigcs": "dev-master",
                 "phpspec/prophecy-phpunit": "^2.0",
                 "phpunit/phpunit": "^9.4",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symfony/var-dumper": "^5.2",
-                "symfony/yaml": "^5.2"
+                "symfony/var-dumper": "^5.2 || ^6.0",
+                "symfony/yaml": "^5.2 || ^6.0"
             },
             "bin": [
                 "bin/dcg"
@@ -120,9 +120,9 @@
             "description": "Drupal code generator",
             "support": {
                 "issues": "https://github.com/Chi-teck/drupal-code-generator/issues",
-                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/2.5.1"
+                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/2.5.2"
             },
-            "time": "2022-02-24T10:39:38+00:00"
+            "time": "2022-03-30T16:05:36+00:00"
         },
         {
             "name": "composer/installers",
@@ -6538,5 +6538,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
