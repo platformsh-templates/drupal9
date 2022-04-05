@@ -1,0 +1,174 @@
+tests:
+    'The homepage should be fast':
+        path: 
+          - '/'
+        assertions:
+            - 'main.wall_time <= 250ms'
+    '"assert.active" is a dev_only feature and should be disabled in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.assert_active === false' }
+        exclude: {  }
+    '"display_errors" should be disabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'not is_configuration_enabled("display_errors")' }
+        exclude: {  }
+    '"display_startup_errors" should not be enabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'not is_configuration_enabled("display_startup_errors")' }
+        exclude: {  }
+    '"max_execution_time" should be less than 30 seconds for Web requests':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        assertions:
+            - { label: null, expression: 'runtime.configuration.max_execution_time <= 30' }
+        exclude: {  }
+    '"session.use_strict_mode" should be enabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.session_use_strict_mode === true' }
+        exclude: {  }
+    '"zend.detect_unicode" should be disabled as BOMs are not portable':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.zend_detect_unicode === false' }
+        exclude: {  }
+    'PHP Preloading should be configured':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
+        when: 'is_extension_loaded("zend_opcache")'
+        exclude: {  }
+    'The realpath cache ttl should be more than one hour in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.realpath_cache_ttl >= 3600' }
+        exclude: {  }
+    # 'You should enable APCu for Drupal 8':
+    #     path:
+    #         - '/.*'
+    #     methods:
+    #         - ANY
+    #     command: '.*'
+    #     assertions:
+    #         - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
+    #     when: 'metrics.drupal8.installed.count > 0'
+    #     exclude: {  }
+    'The session garbage collector should be disabled in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.session_gc_probability === 0' }
+        exclude: {  }
+# recommendations:
+#     php.drupal8.enable_apcu:
+#         enabled: false
+#     php.drupal8.twig_cache:
+#         enabled: false
+scenarios: |
+    #!blackfire-player
+
+    name "Umami Scenarios"
+
+    group login
+        visit url("/en/user/login")
+            name "Login page"
+
+        submit button("op")
+            name "Authenticate"
+            param name "var('umami_username')"
+            param pass "var('umami_password')"
+            
+    group homepages
+        visit url("/")
+            name "Homepage (English)"
+            expect status_code() == 200
+        visit url("/es")
+            name "Homepage (Español)"
+            expect status_code() == 200
+
+    group articles
+        visit url("/en/articles")
+            name "Articles"
+            expect status_code() == 200
+            expect css("div.view-content > div.views-row").count() == 8
+
+    group recipes
+        visit url("/en/recipes")
+            name "Recipes"
+            expect status_code() == 200
+            expect css("div.view-content > div.views-row").count() == 9
+
+    group admin_anonymous
+        visit url("/en/admin/content")
+            expect status_code() == 403
+        visit url("/en/admin/structure")
+            expect status_code() == 403
+
+    group admin_authenticated
+        visit url("/en/admin/content")
+            expect status_code() == 403
+        visit url("/en/admin/structure")
+            expect status_code() == 403
+
+    scenario
+        name "Anonymous Visit"
+        include homepages
+        include articles
+        include recipes
+        include admin_anonymous
+
+    scenario
+        name "Authenticated Visit"
+        include login
+        visit url("/")
+            name "Homepage"
+            expect status_code() == 200
+            #expect css('nav.block ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
+        include articles
+        include recipes
+        include admin_authenticated
+
+
+# scenario
+#     name "Authenticated Visit"
+#     include login
+#     visit url("/")
+#         name "Homepage"
+#         expect status_code() == 200
+#         expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'

@@ -13,11 +13,31 @@ dependencies:
     php:
         composer/composer: '^2'
 
+variables:
+    php:
+        assert.active: 'off'
+        display_errors: 'off'
+        display_startup_errors: 'off'
+        max_execution_time: '30'
+        session.use_strict_mode: 'On'
+        zend.detect_unicode: 'Off'
+        opcache.memory_consumption: '128'
+        opcache.interned_strings_buffer: '8'
+        opcache.max_accelerated_files: '4000'
+        opcache.revalidate_freq: '60'
+        opcache.fast_shutdown: '1'
+        opcache.enable_cli: '1'
+        realpath_cache_ttl: '3600'
+        session.gc_probability: '0'
+
 runtime:
     # Enable the redis extension so Drupal can communicate with the Redis cache.
     extensions:
         - redis
         - sodium
+        - opcache
+        - apcu
+        - blackfire
 
 # The relationships of the application with services or other applications.
 #
@@ -64,8 +84,7 @@ mounts:
 
 # Configuration of the build of this application.
 build:
-    # Automatically run `composer install` on every build.
-    flavor: composer
+    flavor: none
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -73,6 +92,8 @@ hooks:
     # No services are available but the disk is writeable.
     build: |
         set -e
+        composer --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader --apcu-autoloader
+        composer dump-autoload --apcu
     # The deploy hook runs after your application has been deployed and started.
     # Code cannot be modified at this point but the database is available.
     # The site is not accepting requests while this script runs so keep it
@@ -146,6 +167,9 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
+    garbage:
+        spec: '*/11 * * * *'
+        cmd: 'php garbage-collect.php'
 
 source:
   operations:
