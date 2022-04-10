@@ -1705,22 +1705,22 @@
         },
         {
             "name": "drush/drush",
-            "version": "11.0.7",
+            "version": "11.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "6991a3b8f6827d0bab13005402730fc50d130a50"
+                "reference": "098935045aa4b28191bee64346eccd5f24267245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/6991a3b8f6827d0bab13005402730fc50d130a50",
-                "reference": "6991a3b8f6827d0bab13005402730fc50d130a50",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/098935045aa4b28191bee64346eccd5f24267245",
+                "reference": "098935045aa4b28191bee64346eccd5f24267245",
                 "shasum": ""
             },
             "require": {
                 "chi-teck/drupal-code-generator": "^2.4",
                 "composer/semver": "^1.4 || ^3",
-                "consolidation/annotated-command": "^4.5",
+                "consolidation/annotated-command": "^4.5.3",
                 "consolidation/config": "^2",
                 "consolidation/filter-via-dot-access-data": "^2",
                 "consolidation/robo": "^3.0.9",
@@ -1839,7 +1839,7 @@
                 "irc": "irc://irc.freenode.org/drush",
                 "issues": "https://github.com/drush-ops/drush/issues",
                 "slack": "https://drupal.slack.com/messages/C62H9CWQM",
-                "source": "https://github.com/drush-ops/drush/tree/11.0.7"
+                "source": "https://github.com/drush-ops/drush/tree/11.0.8"
             },
             "funding": [
                 {
@@ -1847,7 +1847,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-09T19:32:53+00:00"
+            "time": "2022-04-09T10:54:19+00:00"
         },
         {
             "name": "egulias/email-validator",
