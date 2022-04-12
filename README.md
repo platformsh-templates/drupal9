@@ -400,7 +400,7 @@ Open the dropdown below to view all of the **Added** and **Updated** files you'l
 | [`.platform.app.yaml`](.platform.app.yaml) | **Added:**<br><br> This file is required to define the build and deploy process for all application containers on Platform.sh. Within this file, the runtime version, relationships to service containers, and writable mounts are configured. It's also in this file that it is defined what dependencies are installed, when they are installed, and that package manager will be used to do so.<br><br>Take a look at the [Application](https://docs.platform.sh/configuration/app.html) documentation for more details about configuration. For more information about the sequence of events that lead from a build to deployment, see the [Build and deploy timeline documentation](https://docs.platform.sh/overview/build-deploy.html).<br><br> This template uses Composer 2 to install dependencies using the default `composer` [build flavor](https://docs.platform.sh/languages/php.html#build-flavor) prior to the `build` hook. Drush tasks are run during the `deploy` hook, and referenced again during the defined `cron` job. |
 | [`drush/platformsh_generate_drush_yml.php`](drush/platformsh_generate_drush_yml.php) | **Added:**<br><br> This file has been included to generate the drush yaml configuration on every deployment. |
 | [`.platform/services.yaml`](.platform/services.yaml) | **Added:**<br><br> Platform.sh provides a number of on-demand managed services that can easily be added to your projects. It's within this file that each service's version, name, resources, and additional configuration are set. See the [Services documentation](https://docs.platform.sh/configuration/services.html) for more details on configuration, version and service availability.<br><br> In this template, MariaDB and Redis have been configured. |
-| [`.platform/routes.yaml`](.platform/routes.yaml) | **Added:**<br><br> This file is require to deploy on Platform.sh, as it defines how requests should be handled on the platform. It's within this file that redirects and basic caching can be configured. See the [Routes documentation](https://docs.platform.sh/configuration/routes.html) for more configuration details.<br><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie mauris ut magna laoreet tempor. |
+| [`.platform/routes.yaml`](.platform/routes.yaml) | **Added:**<br><br> This file is require to deploy on Platform.sh, as it defines how requests should be handled on the platform. It's within this file that redirects and basic caching can be configured. See the [Routes documentation](https://docs.platform.sh/configuration/routes.html) for more configuration details.<br><br> |
 | [`php.ini`](php.ini) | **Added:**<br><br> An initial `php.ini` file has also beed added. The settings are a result of performance testing and best practice recommendations coming from [Blackfire.io](https://blackfire.io). They will initialize Drupal with a number of good baseline performance settings for production applications, and complement many of the tests specified in [`.blackfire.yml`](.blackfire.yml). |
 | [`.blackfire.yml`](.blackfire.yml) | **Added:**<br><br> This file has been added to help you get started using [Blackfire.io](https://blackfire.io) on your project. See [the Blackfire section below](#blackfireio-creating-a-continuous-observability-strategy) for more information on how to get started. |
 | [`.lando.upstream.yml`](.lando.upstream.yml) | **Added:**<br><br> This file configures [Lando](https://docs.platform.sh/development/local/lando.html) as a local development option for this template. See the [Platform.sh Lando plugin documentation](https://docs.lando.dev/platformsh/) for more information about configuration and the [Local development](#local-development) section of this README for how to get started. |
@@ -687,6 +687,36 @@ drush cache-rebuild
 
 </details>
 
+
+<details>
+<summary><strong>Default <code>hash_salt</code> behavior</strong></summary><br/>
+
+Drupal's [default settings set](https://github.com/drupal/drupal/blob/9.3.x/core/assets/scaffold/files/default.settings.php#L252) `hash_salt` to an empty string:
+
+```php
+$settings['hash_salt'] = '';
+```
+
+In the past, Platform.sh templates have overridden this value:
+
+```php
+$settings['hash_salt'] = $settings['hash_salt'] ?? $platformsh->projectEntropy;
+```
+
+This setting was insufficient to cover some user configurations - such as those cases when an application depends on a `Null` value for `hash_salt`. 
+
+Now, the setting looks like this in `settings.platformsh.php`:
+
+```bash
+$settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->projectEntropy : $settings['hash_salt'];
+```
+
+This change sets `hash_salt` to the built-in environment variable `PLATFORM_PROJECT_ENTROPY` value if the project contains the default settings OR `Null`. 
+If your application code *depends* on an empty value, feel free to comment out that line, or reset again later in that file.
+
+Feel free to visit [`platformsh-templates/drupal9#73`](https://github.com/platformsh-templates/drupal9/pull/73) for more details on this discussion.
+
+</details>
 
 
 
