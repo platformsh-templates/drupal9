@@ -29,7 +29,7 @@
 <a href="https://github.com/platformsh-templates/drupal9/issues">
 <img src="https://img.shields.io/github/issues/platformsh-templates/drupal9.svg?style=for-the-badge&labelColor=f4f2f3&color=ffd9d9&label=Issues" alt="Open issues" />
 </a>&nbsp&nbsp
-<a href="https://github.com/platformsh-templates/pulls">
+<a href="https://github.com/platformsh-templates/drupal9/pulls">
 <img src="https://img.shields.io/github/issues-pr/platformsh-templates/drupal9.svg?style=for-the-badge&labelColor=f4f2f3&color=ffd9d9&label=Pull%20requests" alt="Open PRs" />
 </a>&nbsp&nbsp
 <a href="https://github.com/platformsh-templates/drupal9/blob/master/LICENSE">
