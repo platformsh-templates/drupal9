@@ -92,7 +92,7 @@ This will automatically create a new project and initialize the repository for y
 You can also quickly recreate this project locally with the following command:
 
 ```bash
-composer create-project platformsh/drupal-recommended-project -s dev
+composer create-project platformsh/drupal9 -s dev
 ```
 
 
@@ -792,7 +792,7 @@ To find out more, check out the demo below and go to our [website](https://platf
 
 
 
-## Contributing
+## Contribute
 
 <h3 align="center">Help us keep top-notch templates!</h3>
 
