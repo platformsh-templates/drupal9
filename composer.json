@@ -1,5 +1,5 @@
 {
-  "name": "platformsh/drupal-recommended-project",
+  "name": "platformsh/drupal9",
   "description": "This template builds Drupal 9 for Platform.sh based the \"Drupal Recommended\" Composer project.",
   "type": "project",
   "license": "GPL-2.0-or-later",
