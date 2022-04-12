@@ -128,26 +128,26 @@ foreach ($platformsh->variables() as $name => $value) {
   $parts = explode(':', $name);
   list($prefix, $key) = array_pad($parts, 3, null);
   switch ($prefix) {
-    // Variables that begin with `d8settings` or `drupal` get mapped
+    // Variables that begin with `drupalsettings` or `drupal` get mapped
     // to the $settings array verbatim, even if the value is an array.
-    // For example, a variable named d8settings:example-setting' with
+    // For example, a variable named drupalsettings:example-setting' with
     // value 'foo' becomes $settings['example-setting'] = 'foo';
     case 'drupalsettings':
     case 'drupal':
       $settings[$key] = $value;
       break;
-    // Variables that begin with `d8config` get mapped to the $config
+    // Variables that begin with `drupalconfig` get mapped to the $config
     // array.  Deeply nested variable names, with colon delimiters,
     // get mapped to deeply nested array elements. Array values
     // get added to the end just like a scalar. Variables without
     // both a config object name and property are skipped.
-    // Example: Variable `d8config:conf_file:prop` with value `foo` becomes
+    // Example: Variable `drupalconfig:conf_file:prop` with value `foo` becomes
     // $config['conf_file']['prop'] = 'foo';
-    // Example: Variable `d8config:conf_file:prop:subprop` with value `foo` becomes
+    // Example: Variable `drupalconfig:conf_file:prop:subprop` with value `foo` becomes
     // $config['conf_file']['prop']['subprop'] = 'foo';
-    // Example: Variable `d8config:conf_file:prop:subprop` with value ['foo' => 'bar'] becomes
+    // Example: Variable `drupalconfig:conf_file:prop:subprop` with value ['foo' => 'bar'] becomes
     // $config['conf_file']['prop']['subprop']['foo'] = 'bar';
-    // Example: Variable `d8config:prop` is ignored.
+    // Example: Variable `drupalconfig:prop` is ignored.
     case 'drupalconfig':
       if (count($parts) > 2) {
         $temp = &$config[$key];
