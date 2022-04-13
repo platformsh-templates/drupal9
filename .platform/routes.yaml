@@ -5,7 +5,7 @@
 
 "https://{default}/":
     type: upstream
-    upstream: "drupal:http"
+    upstream: "app:http"
     cache:
       enabled: true
 
