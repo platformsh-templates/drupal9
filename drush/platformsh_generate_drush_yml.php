@@ -31,7 +31,7 @@ function _platformsh_drush_site_url() {
     return
       [!$a['primary'], strpos($a['url'], 'https://') !== 0, strlen($a['url'])]
       <=>
-      [!$a['primary'], strpos($a['url'], 'https://') !== 0, strlen($b['url'])];
+      [!$b['primary'], strpos($b['url'], 'https://') !== 0, strlen($b['url'])];
   });
 
   // Return the url of the first one.
