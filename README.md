@@ -310,7 +310,6 @@ In general, the steps are as follows:
     web_environment:
     - PLATFORMSH_CLI_TOKEN=abcdeyourtoken`
     ```
-1. Update [`.ddev/config.yaml`](.ddev/config.yaml) changing the [`name:`](.ddev/config.yaml#L1) property to match the name of your project.
 1. Run `ddev restart`.
 1. Get your project ID with `platform project:info`. If you have not already connected your local repo with the project (as is the case with a source integration, by default), you can run `platform project:list` to locate the project ID, and `platform project:set-remote PROJECT_ID` to configure Platform.sh locally.
 1. Update the `.ddev/providers/platform.yaml` file for your current setup:
