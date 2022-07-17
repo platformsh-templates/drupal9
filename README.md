@@ -635,10 +635,14 @@ Note that `rsync` is picky about its trailing slashes, so be sure to include tho
 
 </details>
 
-### Add a Github Workflow
-The 'github-workflow' branch adds a .github directory to the root. This sets up a Github actions workflow.
+### Add a github workflow
+The 'github-workflow' branch adds a .github directory to the root directory. This sets up a github actions workflow.
 The workflow is triggered on push or pull-requests to the repo. The .github/workflows/ci.yml file spins up 
-the DDEV containers found inside your .ddev directory. 
+the DDEV containers inside the .ddev directory. It relies on a marketplace actions app supplied by the DDEV project. 
+
+There are two custom commands added to the DDEV web container inside .ddev/commands. These example commands run a PHPUnit test and PHP codesniffer on a custom drupal module. The commands work on the local DDEV Drupal site. To enable the
+workflow, in the repository settings choose Branches > Branch protection rules > Require status checks. Add 'ci' as a 
+status check.
 
 The paths and url's set in the phpunit.xml file in the root may be changed according to your local DDEV setup.
 The database of your local .ddev site can be exported and added to the 'db-dumps' directory. 
