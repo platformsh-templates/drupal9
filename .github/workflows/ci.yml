@@ -1,0 +1,19 @@
+name: ci 
+on: [push, pull_request]
+
+jobs:
+  newtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: jonaseberle/github-action-setup-ddev@v1
+      # example: composer install
+      - run: ddev composer install
+      # example: fill database
+      - run: ddev mysql < db-dumps/db.sql
+      # Test running a PHPUnit test inside ddev container
+      - run: mkdir -p web/sites/simpletest/browser_output
+      - run: chmod a+w web/sites/simpletest/browser_output
+      - run: ddev phpunit
+      - run: ./vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,install,js web/modules/custom/amdj_message
+      # ... and so on.
