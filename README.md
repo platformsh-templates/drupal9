@@ -355,6 +355,7 @@ These steps actually assume the earliest starting point possible - that there is
 - [Dependencies](#dependencies)
 - [Deploying to Platform.sh](#deploying-to-platformsh)
 - [Migrating your data](#migrating-your-data)
+- [Add a github workflow](#add-a-github-workflow)
 - [Next steps](#next-steps)
 
 If you already have code you'd like to migrate, feel free to focus on the steps most relevant to your application and skip the first section.
@@ -634,6 +635,13 @@ Note that `rsync` is picky about its trailing slashes, so be sure to include tho
 
 </details>
 
+### Add a Github Workflow
+The 'github-workflow' branch adds a .github directory to the root. This sets up a Github actions workflow.
+The workflow is triggered on push or pull-requests to the repo. The .github/workflows/ci.yml file spins up 
+the DDEV containers found inside your .ddev directory. 
+
+The paths and url's set in the phpunit.xml file in the root may be changed according to your local DDEV setup.
+The database of your local .ddev site can be exported and added to the 'db-dumps' directory. 
 
 
 ### Next steps
