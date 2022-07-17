@@ -1,0 +1,5 @@
+#!/bin/bash
+
+## Run a phpunit functional test
+
+vendor/bin/phpunit ./web/modules/custom/amdj_message/tests/src/Functional/AmdjMessagePageTest.php

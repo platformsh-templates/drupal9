@@ -1,0 +1,4 @@
+#!/bin/bash
+
+## Run PHP Code sniffer on custom module 
+vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,install,js web/modules/custom/amdj_message
