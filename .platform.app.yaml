@@ -81,11 +81,11 @@ hooks:
     deploy: |
         set -e
         php ./drush/platformsh_generate_drush_yml.php
-      # if drupal is installed, will call the following drush commands:
-      #   - `cache-rebuild`
-      #   - `updatedb`
-      #   - and if config files are present, `config-import`
-      ./drush/platformsh_deploy_drupal.sh
+        # if drupal is installed, will call the following drush commands:
+        #   - `cache-rebuild`
+        #   - `updatedb`
+        #   - and if config files are present, `config-import`
+        ./drush/platformsh_deploy_drupal.sh
 
 # The configuration of app when it is exposed to the web.
 web:
