@@ -19,8 +19,8 @@
     "drupal/core-composer-scaffold": "^9.3",
     "drupal/core-project-message": "^9.3",
     "drupal/core-recommended": "^9.3",
-    "drupal/redis": "^1.5",
-    "drush/drush": "^11.1",
+    "drupal/redis": "^1.6",
+    "drush/drush": "^11.3",
     "platformsh/config-reader": "^2.4"
   },
   "conflict": {
