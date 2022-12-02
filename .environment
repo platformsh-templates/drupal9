@@ -11,4 +11,4 @@ if [ -n "$PLATFORM_APP_DIR" -a -f "$PLATFORM_APP_DIR"/composer.json ] ; then
 fi
 
 # Set the default site URL for drush.
-export DRUSH_OPTIONS_URI=$(echo $PLATFORM_ROUTES | base64 --decode | jq -r 'to_entries | map(select(.value.type == "upstream")) | sort_by(.value.primary, .key) | reverse | [.[].key] | first')
+export DRUSH_OPTIONS_URI=$(echo $PLATFORM_ROUTES | base64 --decode | jq -r "to_entries | map(select(.value.upstream == \"$PLATFORM_APPLICATION_NAME\")) | sort_by(.value.primary, .key) | reverse | [.[].key] | first")
