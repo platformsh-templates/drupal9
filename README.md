@@ -36,6 +36,7 @@
 <img src="https://img.shields.io/static/v1?label=License&message=MIT&style=for-the-badge&labelColor=f4f2f3&color=ffd9d9" alt="License" />
 </a>&nbsp&nbsp
 <br /><br />
+
 <a href="https://console.platform.sh/projects/create-project/?template=https://raw.githubusercontent.com/platformsh/template-builder/master/templates/drupal9/.platform.template.yaml&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://raw.githubusercontent.com/platformsh-templates/drupal9/updates/.platform.template.yaml" target="_blank" title="Deploy with Platform.sh"><img src="https://platform.sh/images/deploy/deploy-button-lg-blue.svg" width="175px"></a>
 </p>
 </p>
@@ -77,7 +78,7 @@ Drupal is a flexible and extensible PHP-based CMS framework.
 #### Quickstart
 
 
-The quickest way to deploy this template on Platform.sh is by clicking the button below. 
+The quickest way to deploy this template on Platform.sh is by clicking the button below.
 This will automatically create a new project and initialize the repository for you.
 
 <p align="center">
@@ -96,7 +97,7 @@ composer create-project platformsh/drupal9 -s dev
 ```
 
 
-> **Note:**    
+> **Note:**
 >
 > Platform.sh templates prioritize upstream release versions over our own. Despite this, we update template dependencies on a scheduled basis independent of those upstreams. Because of this, template repos do not contain releases. This may change in the future, but until then the `-s dev` flag is necessary to use `composer create-project`.
 
@@ -110,7 +111,7 @@ For all of the other options below, clone this repository first:
 git clone https://github.com/platformsh-templates/drupal9
 ```
 
-If you're trying to deploy from GitHub, you can generate a copy of this repository first in your own namespace by clicking the [Use this template](https://github.com/platformsh-templates/drupal9/generate) button at the top of this page. 
+If you're trying to deploy from GitHub, you can generate a copy of this repository first in your own namespace by clicking the [Use this template](https://github.com/platformsh-templates/drupal9/generate) button at the top of this page.
 
 Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAMESPACE/drupal9.git`.
 
@@ -126,24 +127,12 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Set the project remote
 
-   Find your `PROJECT_ID` by running the command `platform project:list` 
+   Find your `PROJECT_ID` by running the command `platform project:list`
 
    ```bash
    +---------------+------------------------------------+------------------+---------------------------------+
@@ -160,7 +149,7 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
    ```bash
    git push platform DEFAULT_BRANCH
    ```
-   
+
 <!-- <br/>
 </blockquote> -->
 </details>
@@ -176,19 +165,7 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Setup the integration:
@@ -210,24 +187,12 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Create the repository
 
-   Create a new repository on GitLab, set it as a new remote for your local copy, and push to the default branch. 
+   Create a new repository on GitLab, set it as a new remote for your local copy, and push to the default branch.
 
 1. Setup the integration:
 
@@ -248,24 +213,12 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Create the repository
 
-   Create a new repository on Bitbucket, set it as a new remote for your local copy, and push to the default branch. 
+   Create a new repository on Bitbucket, set it as a new remote for your local copy, and push to the default branch.
 
 1. Setup the integration:
 
@@ -285,7 +238,7 @@ Run through the Drupal installer as normal.  You will not be asked for database 
 
 This section provides instructions for running the `drupal9` template locally, connected to a live database instance on an active Platform.sh environment.
 
-In all cases for developing with Platform.sh, it's important to develop on an isolated environment - do not connect to data on your production environment when developing locally. 
+In all cases for developing with Platform.sh, it's important to develop on an isolated environment - do not connect to data on your production environment when developing locally.
 Each of the options below assume that you have already deployed this template to Platform.sh, as well as the following starting commands:
 
 ```bash
@@ -297,14 +250,14 @@ $ platform environment:branch updates
 <details>
 <summary>Drupal: using ddev</summary><br />
 
-ddev provides an integration with Platform.sh that makes it simple to develop Drupal locally. Check the [providers documentation](https://ddev.readthedocs.io/en/latest/users/providers/platform/) for the most up-to-date information. 
+ddev provides an integration with Platform.sh that makes it simple to develop Drupal locally. Check the [providers documentation](https://ddev.readthedocs.io/en/latest/users/providers/platform/) for the most up-to-date information.
 
 In general, the steps are as follows:
 
 1. [Install ddev](https://ddev.readthedocs.io/en/stable/#installation).
 1. A configuration file has already been provided at `.ddev/providers/platform.yaml`, so you should not need to run `ddev config`.
 1. [Retrieve an API token](https://docs.platform.sh/development/cli/api-tokens.html#get-a-token) for your organization via the management console.
-1. Update your dedev global configuration file to use the token you've just retrieved: 
+1. Update your dedev global configuration file to use the token you've just retrieved:
     ```yaml
     web_environment:
     - PLATFORMSH_CLI_TOKEN=abcdeyourtoken`
@@ -318,14 +271,14 @@ In general, the steps are as follows:
     environment: CURRENT_ENVIRONMENT
     application: drupal
     ```
-1. Get the current environment's data with `ddev pull platform`. 
+1. Get the current environment's data with `ddev pull platform`.
 1. When you have finished with your work, run `ddev stop` and `ddev poweroff`.
 
 </details>
 <details>
 <summary>Drupal: using Lando</summary><br />
 
-Lando supports PHP applications [configured to run on Platform.sh](https://docs.platform.sh/development/local/lando.html), and pulls from the same container registry Platform.sh uses on your remote environments during your local builds through its own [recipe and plugin](https://docs.lando.dev/platformsh/). 
+Lando supports PHP applications [configured to run on Platform.sh](https://docs.platform.sh/development/local/lando.html), and pulls from the same container registry Platform.sh uses on your remote environments during your local builds through its own [recipe and plugin](https://docs.lando.dev/platformsh/).
 
 1. [Install Lando](https://docs.lando.dev/getting-started/installation.html).
 1. Make sure Docker is already running - Lando will attempt to start Docker for you, but it's best to have it running in the background before beginning.
@@ -360,7 +313,7 @@ If you already have code you'd like to migrate, feel free to focus on the steps 
 
 ### Getting started
 
-Assuming that your starting point is no local code, the steps below will setup a starting repository we can begin to make changes to to rebuild this template and migrate to Platform.sh. 
+Assuming that your starting point is no local code, the steps below will setup a starting repository we can begin to make changes to to rebuild this template and migrate to Platform.sh.
 If you already have a codebase you are trying to migrate, move onto the next step - [Adding and updating files](#adding-and-updating-files) - and substitute any reference to the default branch `main` with some other branch name.
 
 
@@ -380,7 +333,7 @@ $ git merge --allow-unrelated-histories -X theirs 9.3.9
 
 ### Adding and updating files
 
-A small number of files need to be added to or modified in your repository at this point. 
+A small number of files need to be added to or modified in your repository at this point.
 Some of them explicitly configure how the application is built and deployed on Platform.sh, while others simply modify files you may already have locally, in which case you will need to replicate those changes.
 
 Open the dropdown below to view all of the **Added** and **Updated** files you'll need to reproduce in your migration.
@@ -412,9 +365,9 @@ Open the dropdown below to view all of the **Added** and **Updated** files you'l
 
 ### Dependencies and configuration
 
-Sometimes it is necessary to install additional dependencies to and modify the configuration of an upstream project to deploy on Platform.sh. 
-When it is, we do our best to keep these modifications to the minimum necessary. 
-Run the commands below to reproduce the dependencies in this template. 
+Sometimes it is necessary to install additional dependencies to and modify the configuration of an upstream project to deploy on Platform.sh.
+When it is, we do our best to keep these modifications to the minimum necessary.
+Run the commands below to reproduce the dependencies in this template.
 
 
 
@@ -423,7 +376,7 @@ $ composer require platformsh/config-reader drush/drush drupal/redis
 $ composer config allow-plugins.composer/installers true --no-plugins
 $ composer config allow-plugins.drupal/core-composer-scaffold true --no-plugins
 $ composer config allow-plugins.drupal/core-project-message true --no-plugins
-$ composer config allow-plugins.cweagans/composer-patches true --no-plugins 
+$ composer config allow-plugins.cweagans/composer-patches true --no-plugins
 
 ```
 
@@ -431,7 +384,7 @@ $ composer config allow-plugins.cweagans/composer-patches true --no-plugins
 
 ### Deploying to Platform.sh
 
-Your repository now has all of the code it needs in order to deploy to Platform.sh. 
+Your repository now has all of the code it needs in order to deploy to Platform.sh.
 
 
 <details>
@@ -445,24 +398,12 @@ Your repository now has all of the code it needs in order to deploy to Platform.
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Set the project remote
 
-   Find your `PROJECT_ID` by running the command `platform project:list` 
+   Find your `PROJECT_ID` by running the command `platform project:list`
 
    ```bash
    +---------------+------------------------------------+------------------+---------------------------------+
@@ -479,7 +420,7 @@ Your repository now has all of the code it needs in order to deploy to Platform.
    ```bash
    git push platform DEFAULT_BRANCH
    ```
-   
+
 <!-- <br/>
 </blockquote> -->
 </details>
@@ -495,19 +436,7 @@ Your repository now has all of the code it needs in order to deploy to Platform.
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Setup the integration:
@@ -529,24 +458,12 @@ Your repository now has all of the code it needs in order to deploy to Platform.
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Create the repository
 
-   Create a new repository on GitLab, set it as a new remote for your local copy, and push to the default branch. 
+   Create a new repository on GitLab, set it as a new remote for your local copy, and push to the default branch.
 
 1. Setup the integration:
 
@@ -567,24 +484,12 @@ Your repository now has all of the code it needs in order to deploy to Platform.
 
 1. Install the Platform.sh CLI
 
-   #### Linux/OSX
-
-   ```bash
-   curl -sS https://platform.sh/cli/installer | php
-   ```
-
-   #### Windows
-
-   ```bash
-   curl -f https://platform.sh/cli/installer -o cli-installer.php
-   php cli-installer.php
-   ```
-
+   Follow the instructions to [install the Platform.sh CLI](https://docs.platform.sh/administration/cli.html) for your operating system.
    You can verify the installation by logging in (`platformsh login`) and listing your projects (`platform project:list`).
 
 1. Create the repository
 
-   Create a new repository on Bitbucket, set it as a new remote for your local copy, and push to the default branch. 
+   Create a new repository on Bitbucket, set it as a new remote for your local copy, and push to the default branch.
 
 1. Setup the integration:
 
@@ -614,12 +519,12 @@ platform sql -e main < database.sql
 <details>
 <summary>Importing files</summary><br/>
 
-You first need to download your files from your current hosting environment. 
-The easiest way is likely with rsync, but consult your old host's documentation. 
+You first need to download your files from your current hosting environment.
+The easiest way is likely with rsync, but consult your old host's documentation.
 
-The `platform mount:upload` command provides a straightforward way to upload an entire directory to your site at once to a `mount` defined in a `.platform.app.yaml` file. 
-Under the hood, it uses an SSH tunnel and rsync, so it is as efficient as possible. 
-(There is also a `platform mount:download` command you can use to download files later.) 
+The `platform mount:upload` command provides a straightforward way to upload an entire directory to your site at once to a `mount` defined in a `.platform.app.yaml` file.
+Under the hood, it uses an SSH tunnel and rsync, so it is as efficient as possible.
+(There is also a `platform mount:download` command you can use to download files later.)
 Run the following from your local Git repository root (modifying the `--source` path if needed and setting `BRANCH_NAME` to the branch you are using).
 
 A few examples are listed below, but repeat for all directories that contain data you would like to migrate.
@@ -637,12 +542,12 @@ Note that `rsync` is picky about its trailing slashes, so be sure to include tho
 
 ### Next steps
 
-With your application now deployed on Platform.sh, things get more interesting. 
-Run the command `platform environment:branch new-feature` for your project, or open a trivial pull request off of your current branch. 
+With your application now deployed on Platform.sh, things get more interesting.
+Run the command `platform environment:branch new-feature` for your project, or open a trivial pull request off of your current branch.
 
 The resulting environment is an *exact* copy of production.
-It contains identical infrastructure to what's been defined in your configuration files, and even includes data copied from your production environment in its services. 
-On this isolated environment, you're free to make any changes to your application you need to, and really test how they will behave on production. 
+It contains identical infrastructure to what's been defined in your configuration files, and even includes data copied from your production environment in its services.
+On this isolated environment, you're free to make any changes to your application you need to, and really test how they will behave on production.
 
 After that, here are a collection of additional resources you might find interesting as you continue with your migration to Platform.sh:
 
@@ -669,7 +574,7 @@ After the environment has finished its deployment, you can investigate issues th
 platform ssh
 ```
 
-If you are running the command outside of a local copy of the project, you will need to include the `-p` (project) and/or `-e` (environment) flags as well. 
+If you are running the command outside of a local copy of the project, you will need to include the `-p` (project) and/or `-e` (environment) flags as well.
 Once you have connected to the container, [logs](https://docs.platform.sh/development/logs.html#container-logs) are available within `/var/log/` for you to investigate.
 
 </details>
@@ -703,7 +608,7 @@ In the past, Platform.sh templates have overridden this value:
 $settings['hash_salt'] = $settings['hash_salt'] ?? $platformsh->projectEntropy;
 ```
 
-This setting was insufficient to cover some user configurations - such as those cases when an application depends on a `Null` value for `hash_salt`. 
+This setting was insufficient to cover some user configurations - such as those cases when an application depends on a `Null` value for `hash_salt`.
 
 Now, the setting looks like this in `settings.platformsh.php`:
 
@@ -711,7 +616,7 @@ Now, the setting looks like this in `settings.platformsh.php`:
 $settings['hash_salt'] = empty($settings['hash_salt']) ? $platformsh->projectEntropy : $settings['hash_salt'];
 ```
 
-This change sets `hash_salt` to the built-in environment variable `PLATFORM_PROJECT_ENTROPY` value if the project contains the default settings OR `Null`. 
+This change sets `hash_salt` to the built-in environment variable `PLATFORM_PROJECT_ENTROPY` value if the project contains the default settings OR `Null`.
 If your application code *depends* on an empty value, feel free to comment out that line, or reset again later in that file.
 
 Feel free to visit [`platformsh-templates/drupal9#73`](https://github.com/platformsh-templates/drupal9/pull/73) for more details on this discussion.
@@ -723,7 +628,7 @@ Feel free to visit [`platformsh-templates/drupal9#73`](https://github.com/platfo
 
 ### Blackfire.io: creating a Continuous Observability Strategy
 
-This template includes a starting [`.blackfire.yml`](.blackfire.yml) file that can be used to enable [Application Performance Monitoring](https://blackfire.io/docs/monitoring-cookbooks/index), [Profiling](https://blackfire.io/docs/profiling-cookbooks/index), [Builds](https://blackfire.io/docs/builds-cookbooks/index) and [Performance Testing](https://blackfire.io/docs/testing-cookbooks/index) on your project. Platform.sh comes with Blackfire pre-installed on application containers, and [setting up requires minimal configuration](https://docs.platform.sh/integrations/observability/blackfire.html). 
+This template includes a starting [`.blackfire.yml`](.blackfire.yml) file that can be used to enable [Application Performance Monitoring](https://blackfire.io/docs/monitoring-cookbooks/index), [Profiling](https://blackfire.io/docs/profiling-cookbooks/index), [Builds](https://blackfire.io/docs/builds-cookbooks/index) and [Performance Testing](https://blackfire.io/docs/testing-cookbooks/index) on your project. Platform.sh comes with Blackfire pre-installed on application containers, and [setting up requires minimal configuration](https://docs.platform.sh/integrations/observability/blackfire.html).
 
 * [What is Blackfire?](https://blackfire.io/docs/introduction)
 * [Configuring Blackfire.io on a Platform.sh project](https://docs.platform.sh/integrations/observability/blackfire.html)
@@ -765,7 +670,7 @@ Our key features include:
 
 * **GitOps: Git as the source of truth**
 
-    Every branch becomes a development environment, and nothing can change without a commit. 
+    Every branch becomes a development environment, and nothing can change without a commit.
 
 * **Batteries included: Managed infrastructure**
 
@@ -773,11 +678,11 @@ Our key features include:
 
 * **Instant cloning: Branch, merge, repeat**
 
-    [Reusable builds](https://docs.platform.sh/overview/build-deploy.html) and automatically inherited production data provide true staging environments - experiment in isolation, test, then destroy or merge.  
+    [Reusable builds](https://docs.platform.sh/overview/build-deploy.html) and automatically inherited production data provide true staging environments - experiment in isolation, test, then destroy or merge.
 
 * **FleetOps: Fleet management platform**
 
-    Leverage our public API along with custom tools like [Source Operations](https://docs.platform.sh/configuration/app/source-operations.html) and [Activity Scripts](https://docs.platform.sh/integrations/activity.html) to [manage thousands of applications](https://youtu.be/MILHG9OqhmE) - their dependency updates, fresh content, and upstream code. 
+    Leverage our public API along with custom tools like [Source Operations](https://docs.platform.sh/configuration/app/source-operations.html) and [Activity Scripts](https://docs.platform.sh/integrations/activity.html) to [manage thousands of applications](https://youtu.be/MILHG9OqhmE) - their dependency updates, fresh content, and upstream code.
 
 
 To find out more, check out the demo below and go to our [website](https://platform.sh/product/).
@@ -796,7 +701,7 @@ To find out more, check out the demo below and go to our [website](https://platf
 
 <h3 align="center">Help us keep top-notch templates!</h3>
 
-Every one of our templates is open source, and they're important resources for users trying to deploy to Platform.sh for the first time or better understand the platform. They act as getting started guides, but also contain a number of helpful tips and best practices when working with certain languages and frameworks. 
+Every one of our templates is open source, and they're important resources for users trying to deploy to Platform.sh for the first time or better understand the platform. They act as getting started guides, but also contain a number of helpful tips and best practices when working with certain languages and frameworks.
 
 See something that's wrong with this template that needs to be fixed? Something in the documentation unclear or missing? Let us know!
 
