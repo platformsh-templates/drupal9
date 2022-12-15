@@ -7,7 +7,7 @@
 name: 'drupal'
 
 # The runtime the application uses.
-type: 'php:8.0'
+type: 'php:8.1'
 
 dependencies:
     php:
@@ -85,7 +85,8 @@ hooks:
         #   - `cache-rebuild`
         #   - `updatedb`
         #   - and if config files are present, `config-import`
-        ./drush/platformsh_deploy_drupal.sh
+        cd web
+        $PLATFORM_APP_DIR/drush/platformsh_deploy_drupal.sh
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -147,7 +148,7 @@ crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
         spec: '*/19 * * * *'
-        commands:
+        commands: 
             start: 'cd web ; drush core-cron'
 
 source:
