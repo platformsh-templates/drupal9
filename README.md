@@ -143,6 +143,8 @@ Then you can clone a copy of it locally with `git clone git@github.com:YOUR_NAME
    ```
 
    Then from within your local copy, run the command `platform project:set-remote PROJECT_ID`.
+   
+   make a change
 
 1. Push
 
