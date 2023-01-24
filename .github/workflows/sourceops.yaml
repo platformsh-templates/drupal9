@@ -51,7 +51,11 @@ jobs:
             echo "psh installer not in PATH"
             export PATH="${HOME}/.platformsh/bin:${PATH}"
           fi
+
+          platform environment:list --type production
+          platform environment:list
+
           printf "Beginning Source Operations toolkit install...\n"
 
-          curl -fsS https://raw.githubusercontent.com/gilzow/source-operations-debug/main/setup.sh | { bash /dev/fd/3 trigger-sopupdate; } 3<&0
+          #curl -fsS https://raw.githubusercontent.com/gilzow/source-operations-debug/main/setup.sh | { bash /dev/fd/3 trigger-sopupdate; } 3<&0
 
