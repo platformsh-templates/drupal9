@@ -33,10 +33,14 @@ scenarioPaths.paths = [
         "label": "PMwvLDBixq152op",
         "path": "node/17/"
     },
-	{
-		"label": "9psSbXig7MzGfjV",
-		"path": "node/9/"
-	}
+    {
+        "label": "9psSbXig7MzGfjV",
+        "path": "node/9/"
+    },
+    {
+        "label": "Forced 404",
+        "delay": 2000,
+    },
 ];
 
 module.exports = scenarioPaths;
