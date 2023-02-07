@@ -1,9 +1,9 @@
 type: drupal9
 docroot: web
-php_version: "8.0"
+php_version: "8.1"
 database:
   type: mariadb
-  version: "10.3"
+  version: "10.4"
 nodejs_version: "16"
 
 # Key features of ddev's config.yaml:
