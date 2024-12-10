@@ -3280,16 +3280,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.6",
+            "version": "v0.12.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "3b5ea0efaa791cd1c65ecc493aec3e2aa55ff57c"
+                "reference": "d73fa3c74918ef4522bb8a3bf9cab39161c4b57c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/3b5ea0efaa791cd1c65ecc493aec3e2aa55ff57c",
-                "reference": "3b5ea0efaa791cd1c65ecc493aec3e2aa55ff57c",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/d73fa3c74918ef4522bb8a3bf9cab39161c4b57c",
+                "reference": "d73fa3c74918ef4522bb8a3bf9cab39161c4b57c",
                 "shasum": ""
             },
             "require": {
@@ -3353,9 +3353,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.6"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.7"
             },
-            "time": "2024-12-07T20:08:52+00:00"
+            "time": "2024-12-10T01:58:33+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6263,21 +6263,21 @@
         },
         {
             "name": "typo3/phar-stream-wrapper",
-            "version": "v3.1.7",
+            "version": "v3.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/phar-stream-wrapper.git",
-                "reference": "5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c"
+                "reference": "a931b28f422a60052db85c0a84a05a366453b2c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c",
-                "reference": "5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c",
+                "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/a931b28f422a60052db85c0a84a05a366453b2c0",
+                "reference": "a931b28f422a60052db85c0a84a05a366453b2c0",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "^7.0 || ^8.0"
+                "php": "^7.0 || ~8.0 || ~8.1 || ~8.2 || ~8.3"
             },
             "require-dev": {
                 "ext-xdebug": "*",
@@ -6312,9 +6312,9 @@
             ],
             "support": {
                 "issues": "https://github.com/TYPO3/phar-stream-wrapper/issues",
-                "source": "https://github.com/TYPO3/phar-stream-wrapper/tree/v3.1.7"
+                "source": "https://github.com/TYPO3/phar-stream-wrapper/tree/v3.1.8"
             },
-            "time": "2021-09-20T19:19:13+00:00"
+            "time": "2024-12-09T23:06:33+00:00"
         },
         {
             "name": "webflo/drupal-finder",
