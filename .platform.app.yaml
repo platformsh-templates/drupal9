@@ -11,7 +11,7 @@ type: 'php:8.1'
 
 dependencies:
     php:
-        composer/composer: '^2'
+        composer/composer: '>=2.0 <2.9'
 
 runtime:
     # Enable the redis extension so Drupal can communicate with the Redis cache.
@@ -148,7 +148,7 @@ crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
         spec: '*/19 * * * *'
-        commands: 
+        commands:
             start: 'cd web ; drush core-cron'
 
 source:
