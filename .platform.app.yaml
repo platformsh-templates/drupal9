@@ -80,7 +80,6 @@ hooks:
     # fast.
     deploy: |
         set -e
-        php ./drush/platformsh_generate_drush_yml.php
         # if drupal is installed, will call the following drush commands:
         #   - `cache-rebuild`
         #   - `updatedb`
